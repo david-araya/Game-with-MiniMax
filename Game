@@ -4,3 +4,18 @@ from time import time
 import multiprocessing
 
 from io import StringIO
+
+class Board:
+    humanPlayerScore = 7
+
+    def playerPoints(self):
+        if self.noMoreMoves():
+            return sum(self.board[1:8])
+        else:
+            return self.board[7]
+
+    def computerPoints(self):
+        if self.noMoreMoves():
+            return self.board[0] + sum(self.board[8:])
+        else:
+            return self.board[0]
